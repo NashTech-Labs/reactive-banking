@@ -1,0 +1,13 @@
+<configuration>
+    <!--For more information on customizing logging: https://logback.qos.ch/manual/configuration.html-->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date{ISO8601} %-5level %logger{36} [%X{sourceThread}] - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+</configuration>
