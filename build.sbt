@@ -2,18 +2,18 @@ name := "credibility"
 
 organization := "knoldus"
 
-version := "0.1-SNAPSHOT"
+version := "0.2-SNAPSHOT"
 
-scalaVersion := "2.13.1"
+scalaVersion := "2.13.6"
 
-lazy val akkaHttpVersion = "10.1.11"
-lazy val akkaVersion    = "2.6.4"
-lazy val akkaManagementVersion =  "1.0.5"
-lazy val logbackVersion = "1.2.3"
-lazy val scalaTestVersion = "3.1.0"
+lazy val akkaHttpVersion = "10.2.6"
+lazy val akkaVersion    = "2.6.17"
+lazy val akkaManagementVersion =  "1.1.1"
+lazy val logbackVersion = "1.2.6"
+lazy val scalaTestVersion = "3.2.10"
 
 fork := true
-parallelExecution in ThisBuild := false
+ThisBuild / parallelExecution := false
 
 scalacOptions ++= Seq(
   "-deprecation",
@@ -28,7 +28,7 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka" %% "akka-serialization-jackson" % akkaVersion,
   "com.lightbend.akka.management" %% "akka-management" % akkaManagementVersion,
   "com.lightbend.akka.management" %% "akka-management-cluster-http" % akkaManagementVersion,
-  "com.swissborg" %% "lithium" % "0.11.1",
+  "com.swissborg" %% "lithium" % "0.11.2",
 
   //Logback
   "com.typesafe.akka" %% "akka-slf4j" % akkaVersion,

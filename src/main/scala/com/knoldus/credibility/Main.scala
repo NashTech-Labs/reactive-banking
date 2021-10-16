@@ -1,11 +1,11 @@
 package com.knoldus.credibility
 
 import java.nio.file.Paths
-
 import akka.actor.ActorSystem
 import akka.cluster.sharding.{ClusterSharding, ClusterShardingSettings}
 import akka.http.scaladsl.Http
 import akka.management.scaladsl.AkkaManagement
+import com.typesafe.config.ConfigFactory
 import org.slf4j.LoggerFactory
 
 object Main extends App {
@@ -35,5 +35,6 @@ object Main extends App {
 
   val credibilityRoutes = new CredibilityRoutes(credibilityActorSupervisor)(system.dispatcher)
 
-  Http().bindAndHandle(credibilityRoutes.routes, "localhost")
+  private val port: Int = ConfigFactory.load().getInt("akka.http.server.default-http-port")
+  Http().newServerAt("localhost", port).bindFlow(credibilityRoutes.routes)
 }
